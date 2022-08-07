@@ -13,8 +13,8 @@
             $this->conn = $db;
         }
         // GET ALL
-        public function getCategorys(){
-            $sqlQuery = "SELECT id, description " . $this->db_table . " ";
+        public function getCategories(){
+            $sqlQuery = "SELECT id, description FROM " . $this->db_table . " ";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;

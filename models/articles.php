@@ -58,19 +58,7 @@
         }
         // READ single
         public function getSingleArticle(){
-            $sqlQuery = "SELECT
-                        u.id, 
-                        u.title, 
-                        u.content, 
-                        u.date, 
-                        u.authorId, 
-                        u.author, 
-                        p.description AS categoryId
-                      FROM
-                        ". $this->db_table ." u, categoryId p
-                    WHERE 
-                       u.id = ? AND u.author = p.id
-                    LIMIT 0,1";
+            
             $sqlQuery = "SELECT 
                         a.id, 
                         a.title, 

@@ -14,7 +14,7 @@
         }
         // GET ALL
         public function getProfiles(){
-            $sqlQuery = "SELECT id, description " . $this->db_table . " ";
+            $sqlQuery = "SELECT id, description FROM" . $this->db_table . " ";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;

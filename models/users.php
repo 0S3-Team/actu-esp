@@ -9,7 +9,7 @@
         public $firstname;
         public $lastname;
         public $login;
-        public $token;
+        public $token = "";
         public $profileId;
         public $profile;
         // Db connection

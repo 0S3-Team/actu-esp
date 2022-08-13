@@ -17,13 +17,24 @@
         public function __construct($db){
             $this->conn = $db;
         }
-        // GET ALL
-        public function getArticles(){
-            $sqlQuery = "SELECT a.id, a.title, a.laststname, a.date, a.author AS authorId, u.id AS author, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c, User u WHERE a.author = u.id AND a.categoryId = c.id";
+
+        public function getAllArticles(){
+            $sqlQuery = "SELECT a.id, a.title, a.date, a.author AS authorId, u.id AS author, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c, User u WHERE a.author = u.id AND a.categoryId = c.id";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
         }
+        // GET ARTICLES BY AUTHOR ID
+        public function getArticlesByAuthor($authorId){
+            $sqlQuery = "SELECT a.id, a.title, a.date, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c  WHERE a.author = ? AND a.categoryId = c.id";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $authorId);
+            $stmt->execute();
+            return $stmt;
+        }
+        
+
+
         // CREATE
         public function createArticle(){
             $sqlQuery = "INSERT INTO
@@ -62,7 +73,7 @@
             $sqlQuery = "SELECT 
                         a.id, 
                         a.title, 
-                        a.laststname, 
+                        a.lastname, 
                         a.date, 
                         a.author AS authorId, 
                         u.id AS author, 

@@ -24,11 +24,21 @@
             $stmt->execute();
             return $stmt;
         }
+
         // GET ARTICLES BY AUTHOR ID
         public function getArticlesByAuthor($authorId){
             $sqlQuery = "SELECT a.id, a.title, a.date, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c  WHERE a.author = ? AND a.categoryId = c.id";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->bindParam(1, $authorId);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        // GET ARTICLES BY CATEGORY
+        public function getArticlesByCategory($categoryId){
+            $sqlQuery = "SELECT a.id, a.title, a.date, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c  WHERE a.categoryId = ? AND a.categoryId = c.id";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $categoryId);
             $stmt->execute();
             return $stmt;
         }

@@ -12,6 +12,7 @@
         public $token = "";
         public $profileId;
         public $profile;
+        public $passwordHash;
         // Db connection
         public function __construct($db){
             $this->conn = $db;
@@ -81,7 +82,37 @@
             $this->token = $dataRow['token'];
             $this->profileId = $dataRow['profileId'];
             $this->profile = $dataRow['profile'];
-        }        
+        }
+        
+        public function getUserByLogin(){
+            $sqlQuery = "SELECT
+                        u.id, 
+                        u.firstname, 
+                        u.lastname, 
+                        u.login, 
+                        u.token, 
+                        u.profileId, 
+                        p.description AS profile,
+                        u.passwordHash
+                      FROM
+                        ". $this->db_table ." u, Profile p
+                    WHERE 
+                       u.login = ? AND u.profileId = p.id
+                    LIMIT 0,1";
+            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt->bindParam(1, $this->login);
+            $stmt->execute();
+            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            $this->firstname = $dataRow['firstname'];
+            $this->lastname = $dataRow['lastname'];
+            $this->login = $dataRow['login'];
+            $this->token = $dataRow['token'];
+            $this->profileId = $dataRow['profileId'];
+            $this->profile = $dataRow['profile'];
+            $this->passwordHash = $dataRow['passwordHash'];
+
+        }
         // UPDATE
         public function updateUser(){
             $sqlQuery = "UPDATE

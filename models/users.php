@@ -104,6 +104,10 @@
             $stmt->execute();
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
             
+            if(count($dataRow) == 0){
+                return false;
+            }
+
             $this->firstname = $dataRow['firstname'];
             $this->lastname = $dataRow['lastname'];
             $this->login = $dataRow['login'];
@@ -111,7 +115,8 @@
             $this->profileId = $dataRow['profileId'];
             $this->profile = $dataRow['profile'];
             $this->passwordHash = $dataRow['passwordHash'];
-
+            
+            return true;
         }
         // UPDATE
         public function updateUser(){

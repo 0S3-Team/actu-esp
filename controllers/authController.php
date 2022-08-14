@@ -32,20 +32,38 @@
             if($this->isGoodLogin()) {
                if($this->myUser->profileId == 1) {
                    // Création de la session et redirection vers le DashBoard Admin
+                   session_start();
+                   $_SESSION['profileId'] = $this->myUser->profileId;
+                   $_SESSION['firstname'] = $this->myUser->firstname;
+                   $_SESSION['lastname'] = $this->myUser->lastname;
+                   header('location: http://www.google.com');
+                   exit();
                } else if( $this->myUser->profileId == 2 && $this->myUser->token == "" ) {
                    // Création de la session et redirection vers la vue éditeur simple
+                    session_start();
+                    $_SESSION['profileId'] = $this->myUser->profileId;
+                    $_SESSION['firstname'] = $this->myUser->firstname;
+                    $_SESSION['lastname'] = $this->myUser->lastname;
+                    header('Location: dashbord.php');
+                    exit();
                } else {
                     if($this->isValidToken()) {
                         // Création de la session et redirection vers la vue éditeur avec droit gestion des users
+                        session_start();
+                        $_SESSION['profileId'] = $this->myUser->profileId;
+                        $_SESSION['firstname'] = $this->myUser->firstname;
+                        $_SESSION['lastname'] = $this->myUser->lastname;
+                        header('Location: dashbordEditeur.php');
+                        exit();
                     } else {
-                        // Message erreur sur la zone token du formulaire
+                        echo "Votre login ou mot de passe est incorrecte, veuillez ressayer !!!";
                     }
                }
             }
         }
 
         public function logout() {
-            // destruction de la session;
+            session_destroy();
         }
 
         public function isValidToken() {

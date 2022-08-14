@@ -33,6 +33,8 @@
                if($this->myUser->profileId == 1) {
                    // Création de la session et redirection vers le DashBoard Admin
                    session_start();
+                   $_SESSION['id'] = $this->myUser->id;
+                   $_SESSION['login'] = $this->myUser->login;
                    $_SESSION['profileId'] = $this->myUser->profileId;
                    $_SESSION['firstname'] = $this->myUser->firstname;
                    $_SESSION['lastname'] = $this->myUser->lastname;
@@ -41,6 +43,8 @@
                } else if( $this->myUser->profileId == 2 && $this->myUser->token == "" ) {
                    // Création de la session et redirection vers la vue éditeur simple
                     session_start();
+                    $_SESSION['id'] = $this->myUser->id;
+                    $_SESSION['login'] = $this->myUser->login;
                     $_SESSION['profileId'] = $this->myUser->profileId;
                     $_SESSION['firstname'] = $this->myUser->firstname;
                     $_SESSION['lastname'] = $this->myUser->lastname;
@@ -50,6 +54,8 @@
                     if($this->isValidToken()) {
                         // Création de la session et redirection vers la vue éditeur avec droit gestion des users
                         session_start();
+                        $_SESSION['id'] = $this->myUser->id;
+                        $_SESSION['login'] = $this->myUser->login;
                         $_SESSION['profileId'] = $this->myUser->profileId;
                         $_SESSION['firstname'] = $this->myUser->firstname;
                         $_SESSION['lastname'] = $this->myUser->lastname;

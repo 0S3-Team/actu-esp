@@ -1,6 +1,5 @@
-<IfModule mod_rewrite.c>
 Options +FollowSymLinks
 RewriteEngine On
-RewriteRule ^dashboard /views/admin/accueil.php [QSA,L]
-RewriteRule ^login /views/admin/index.php [QSA,L]
-<IfModule>
+RewriteBase /
+RewriteRule ^dashboard /views/admin/accueil.php []
+RewriteRule ^login /views/admin/index.php [L]

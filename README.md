@@ -15,5 +15,5 @@ Incididunt quis cillum elit culpa dolor amet incididunt tempor magna sint id exe
 
 ## Technologies Utilisées
 - Application Web: PHP - MySQL
-- Service SOAP : nusoap
-- Plateforme de Déploiement: Heroku
+- Service SOAP : [nusoap v0.9.5](https://sourceforge.net/projects/nusoap/)
+- Plateforme de Déploiement: [Heroku](https://heroku.com)

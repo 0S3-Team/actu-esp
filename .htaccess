@@ -1,5 +1,0 @@
-Options +FollowSymLinks
-RewriteEngine On
-RewriteBase /
-RewriteRule ^dashboard /views/admin/accueil.php []
-RewriteRule ^login /views/admin/index.php [L]

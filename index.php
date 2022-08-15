@@ -15,9 +15,9 @@
         <div class="row">
             <div class="col">
                 <div role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary" href="./views/admin/index.php">Login</button>
-                    <button type="button" class="btn btn-primary" href="./views/admin/accueil.php">Admin Dashboard</button>
-                    <button type="button" class="btn btn-primary" href="#">App</button>
+                    <a type="button" class="btn btn-primary" href="./views/admin/index.php">Login</a>
+                    <a type="button" class="btn btn-primary" href="./views/admin/accueil.php">Admin Dashboard</a>
+                    <a type="button" class="btn btn-primary" href="#">App</a>
                 </div>
             </div>
         </div>

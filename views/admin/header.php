@@ -1,6 +1,6 @@
 <?php
 define('CSS_PATH', 'views/admin/assets/css/'); //define CSS path 
-define('JS_PATH', 'views/admin/assets/css/'); //define JavaScript path 
+define('JS_PATH', 'views/admin/assets/js/'); //define JavaScript path 
 define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path 
 ?>
 

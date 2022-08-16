@@ -54,7 +54,7 @@ define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path
       </a>
       <ul id="user-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="./?users">
+          <a href="./?list-users">
             <i class="bi bi-circle"></i><span>Liste des utilisateurs</span>
           </a>
         </li>
@@ -66,7 +66,7 @@ define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path
       </a>
       <ul id="articles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="./?articles">
+          <a href="./?list-articles">
             <i class="bi bi-circle"></i><span>Liste des articles</span>
           </a>
         </li>
@@ -78,7 +78,7 @@ define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path
       </a>
       <ul id="articles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="./?categories">
+          <a href="./?list-categories">
             <i class="bi bi-circle"></i><span>Liste des catégories</span>
           </a>
         </li>

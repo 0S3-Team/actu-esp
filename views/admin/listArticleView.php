@@ -11,7 +11,7 @@
     <div class="col-4">   
 
         <div class="card">
-          <img src="assets/img/card.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo IMG_PATH; ?>card.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Card title
             <i class="bi bi-eye" style="color: blue;"></i>
@@ -27,7 +27,7 @@
     <div class="col-4">   
 
         <div class="card">
-          <img src="assets/img/card.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo IMG_PATH; ?>card.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Card title
             <i class="bi bi-eye" style="color: blue;"></i>
@@ -42,7 +42,7 @@
     </div>
     <div class="col-4">   
         <div class="card">
-          <img src="assets/img/card.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo IMG_PATH; ?>card.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Card title
             <i class="bi bi-eye" style="color: blue;"></i>

@@ -1,3 +1,9 @@
+<?php
+define('CSS_PATH', 'views/admin/assets/css/'); //define CSS path 
+define('JS_PATH', 'views/admin/assets/js/'); //define JavaScript path 
+define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +15,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?php echo IMG_PATH; ?>favicon.png" rel="icon">
+  <link href="<?php echo IMG_PATH; ?>apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="<?php echo CSS_PATH; ?>style.css" rel="stylesheet">
 </head>
 
 <body>
 <header id="header" class="header fixed-top d-flex align-items-center">
   <div class="d-flex align-items-center justify-content-between">
     <a href="#" class="logo d-flex align-items-center">
-      <img src="assets/img/logo.png" alt="">
+      <img src="<?php echo IMG_PATH; ?>logo.png" alt="">
       <span class="d-none d-lg-block">Site d'Actualité</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -53,7 +54,7 @@
       </a>
       <ul id="user-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="ListeUser.php">
+          <a href="./?list-users">
             <i class="bi bi-circle"></i><span>Liste des utilisateurs</span>
           </a>
         </li>
@@ -65,7 +66,7 @@
       </a>
       <ul id="articles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="ListeArticles.php">
+          <a href="./?list-articles">
             <i class="bi bi-circle"></i><span>Liste des articles</span>
           </a>
         </li>
@@ -77,7 +78,7 @@
       </a>
       <ul id="articles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="ListeCategories.php">
+          <a href="./?list-categories">
             <i class="bi bi-circle"></i><span>Liste des catégories</span>
           </a>
         </li>

@@ -6,9 +6,12 @@
         include_once "views/admin/listCategoryView.php";
     } elseif (isset($_GET['list-articles'])) {
         include_once "views/admin/listArticleView.php";
-    } elseif (isset($_GET['blog'])) {
-        include_once "views/blog/homeView.php";
-    }  else {
+    } elseif (isset($_GET['dashboard'])) {
         include_once "views/admin/homeView.php";
+    } elseif (isset($_GET['login'])) {
+        include_once "views/admin/loginView.php";
+    }  else {
+        include_once "views/blog/homeView.php";
+
     } 
 ?>

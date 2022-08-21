@@ -13,9 +13,7 @@
         if($article->createArticle()){
             header('Location: /?list-articles');
             exit();
-        } else {
-            echo "Il y a erreur";
-        }
+        } 
     }   
     include("views/admin/addArticleView.php");
 

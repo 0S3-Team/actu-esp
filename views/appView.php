@@ -1,5 +1,4 @@
 <?php
-    <?php
     if (isset($_GET['list-users'])) {
       $listUser // gnerer par le controleur
       include_once "./admin/listUserView.php";

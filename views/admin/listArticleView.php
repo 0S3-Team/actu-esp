@@ -3,7 +3,7 @@
 
   <div class="d-grid gap-2 d-md-flex justify-content-between">
     <h1>Liste des articles</h1>
-  <a href="ajoutarticle.php"><button class="btn btn-primary me-md-2" type="button">Ajouter</button></a>
+  <a href="/?add-article"><button class="btn btn-primary me-md-2" type="button">Ajouter</button></a>
 </div>
 
 <div class="container-fluid">

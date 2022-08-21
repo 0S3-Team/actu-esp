@@ -1,3 +1,3 @@
 <?php
-    include_once "./views/appView.php";
+    include_once "./views/admin/indexAdminView.php";
 ?>

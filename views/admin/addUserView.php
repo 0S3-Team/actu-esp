@@ -15,16 +15,16 @@
                     <p class="text-center small">Veuillez entrer toutes les informations!!!</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" method="post" novalidate>
                     <div class="col-12">
                       <label for="yourName" class="form-label">Prenom</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <input type="text" name="firstname" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your Firstname!</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourName" class="form-label">Nom</label>
-                      <input type="text" name="name" class="form-control" id="yourName" required>
+                      <input type="text" name="lastname" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your Lastname!</div>
                     </div>
 
@@ -41,7 +41,7 @@
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-                    <label>Générer un token d'admin <input type="checkbox" name=""/></label>
+                    <label>Générer un token d'admin <input type="checkbox" name="addToken"/></label>
                        
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Creer</button>

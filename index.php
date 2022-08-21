@@ -10,7 +10,9 @@
         include_once "views/admin/homeView.php";
     } elseif (isset($_GET['login'])) {
         include_once "views/admin/loginView.php";
-    }  else {
+    } elseif (isset($_GET['add-user'])) {
+        include_once "controllers/userController.php";
+    } else {
         include_once "views/blog/homeView.php";
 
     } 

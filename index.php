@@ -1,6 +1,6 @@
 <?php
     if (isset($_GET['list-users'])) {
-        $listUser // gnerer par le controleur
+        //$listUser // gnerer par le controleur
         include_once "views/admin/listUserView.php";
     } elseif (isset($_GET['list-categories'])) {
         include_once "views/admin/listCategoryView.php";

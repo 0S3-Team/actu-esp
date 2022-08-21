@@ -1,4 +1,4 @@
-<?php
+
 if (isset($_GET['list-users'])) {
   $listUser // gnerer par le controleur
   include_once "views/admin/listUserView.php";
@@ -9,4 +9,3 @@ if (isset($_GET['list-users'])) {
 } else {
   include_once "views/admin/homeView.php";
 }
-?>

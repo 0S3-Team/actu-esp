@@ -11,9 +11,10 @@
     } elseif (isset($_GET['login'])) {
         include_once "views/admin/loginView.php";
     } elseif (isset($_GET['add-user'])) {
-        include_once "controllers/userController.php";
+        include_once "controllers/addUserController.php";
+    } elseif (isset($_GET['add-category'])) {
+        include_once "controllers/addCategoryController.php";
     } else {
         include_once "views/blog/homeView.php";
-
     } 
 ?>

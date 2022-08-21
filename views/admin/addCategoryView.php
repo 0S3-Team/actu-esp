@@ -15,9 +15,9 @@
                     
                   </div>
 
-                   <form class="row g-3 needs-validation" novalidate>
+                   <form class="row g-3 needs-validation" method="post" novalidate>
                     <div class="col-12">
-                      <input type="text" class="form-control">
+                      <input type="text" name="description" class="form-control">
                     </div>
                     
                     <div class="col-12">

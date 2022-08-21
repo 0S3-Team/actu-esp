@@ -33,6 +33,7 @@
                         lastname = :lastname, 
                         login = :login, 
                         token = :token, 
+                        passwordHash = :passwordHash, 
                         profileId = :profileId";
         
             $stmt = $this->conn->prepare($sqlQuery);
@@ -43,6 +44,7 @@
             $this->login=htmlspecialchars(strip_tags($this->login));
             $this->token=htmlspecialchars(strip_tags($this->token));
             $this->profileId=htmlspecialchars(strip_tags($this->profileId));
+            $this->passwordHash=htmlspecialchars(strip_tags($this->passwordHash));
         
             // bind data
             $stmt->bindParam(":firstname", $this->firstname);
@@ -50,6 +52,7 @@
             $stmt->bindParam(":login", $this->login);
             $stmt->bindParam(":token", $this->token);
             $stmt->bindParam(":profileId", $this->profileId);
+            $stmt->bindParam(":passwordHash", $this->passwordHash);
         
             if($stmt->execute()){
                return true;

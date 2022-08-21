@@ -1,17 +1,14 @@
-<?php
-    require_once("../models/users.php");
-    require_once("../config/database.php");
-    
+<?php   
     class AuthController{
         public $login;
         public $password;
         public $token;
         public $myUser; 
 
-        public function __construct($login, $password){
+        public function __construct($login, $password, $userObjectModel){
             $this->login = $login;
             $this->password = $password;
-            $this->myUser = new User($db);
+            $this->myUser = $userObjectModel;
             $this->myUser->login = $login;
         }
     
@@ -38,9 +35,8 @@
                    $_SESSION['profileId'] = $this->myUser->profileId;
                    $_SESSION['firstname'] = $this->myUser->firstname;
                    $_SESSION['lastname'] = $this->myUser->lastname;
-                   header('location: http://www.google.com');
-                   exit();  
-               } else if( $this->myUser->profileId == 2 && $this->myUser->token == "" ) {
+                   return true; 
+               } elseif( $this->myUser->profileId == 2 && $this->myUser->token == "" ) {
                    // Création de la session et redirection vers la vue éditeur simple
                     session_start();
                     $_SESSION['id'] = $this->myUser->id;
@@ -48,23 +44,21 @@
                     $_SESSION['profileId'] = $this->myUser->profileId;
                     $_SESSION['firstname'] = $this->myUser->firstname;
                     $_SESSION['lastname'] = $this->myUser->lastname;
-                    header('Location: dashbord.php');
-                    exit();
-               } else {
-                    if($this->isValidToken()) {
-                        // Création de la session et redirection vers la vue éditeur avec droit gestion des users
-                        session_start();
-                        $_SESSION['id'] = $this->myUser->id;
-                        $_SESSION['login'] = $this->myUser->login;
-                        $_SESSION['profileId'] = $this->myUser->profileId;
-                        $_SESSION['firstname'] = $this->myUser->firstname;
-                        $_SESSION['lastname'] = $this->myUser->lastname;
-                        header('Location: dashbordEditeur.php');
-                        exit();
-                    } else {
-                        echo "Votre login ou mot de passe est incorrecte, veuillez ressayer !!!";
-                    }
-               }
+                    return true;
+               } elseif( $this->myUser->profileId == 2 && $this->isValidToken() ) {
+                    // Création de la session et redirection vers la vue éditeur avec droit gestion des users
+                    session_start();
+                    $_SESSION['id'] = $this->myUser->id;
+                    $_SESSION['login'] = $this->myUser->login;
+                    $_SESSION['profileId'] = $this->myUser->profileId;
+                    $_SESSION['firstname'] = $this->myUser->firstname;
+                    $_SESSION['lastname'] = $this->myUser->lastname;
+                    return true;
+                } else {
+                    // echo "Votre login ou mot de passe est incorrecte, veuillez ressayer !!!";
+                    return false;
+                }
+    
             }
         }
 

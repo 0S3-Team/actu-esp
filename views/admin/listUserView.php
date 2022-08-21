@@ -5,7 +5,7 @@
 <!--     </div> -->
   <div class="d-grid gap-2 d-md-flex justify-content-between">
     <h1>Liste des utilisateurs</h1>
-  <a href="ajoutuser.php"><button class="btn btn-primary me-md-2" type="button">Ajouter</button></a>
+  <a href="/?add-user"><button class="btn btn-primary me-md-2" type="button">Ajouter</button></a>
 </div>
    <table class="table table-striped">
                 <thead>

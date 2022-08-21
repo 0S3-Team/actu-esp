@@ -16,15 +16,15 @@
                     
                   </div>
 
-                   <form class="row g-3 needs-validation" novalidate>
+                   <form class="row g-3 needs-validation" method="post" novalidate>
                     <div class="col-12">
                        <label><b>Titre</b></label>
-                      <input type="text" class="form-control">
+                      <input name="title" type="text" class="form-control">
                     </div>
                     <div class="col-12">
-                       <select name="Categorie" class="form-select">
+                       <select name="categoryId" class="form-select">
                            <option selected>Categorie</option>
-                           <option>POLITIQUE</option>
+                           <option value="1">POLITIQUE</option>
                            <option>SPORT</option>
                            <option>TECHNOLOGIE</option>
                            <option>EDUCATION</option>
@@ -32,7 +32,7 @@
                     </div>
                        <div class="col-12">
                        <label ><b>Contenu</b></label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" name="nom_projet" rows="7" required></textarea>
+                      <textarea name="content" class="form-control" id="exampleFormControlTextarea1" name="nom_projet" rows="7" required></textarea>
                     </div>
 
                     <div class="col-12">

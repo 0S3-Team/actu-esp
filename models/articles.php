@@ -71,7 +71,7 @@
             $stmt->bindParam(":date", $this->date);
             $stmt->bindParam(":author", $this->author);
             $stmt->bindParam(":categoryId", $this->categoryId);
-        
+
             if($stmt->execute()){
                return true;
             }

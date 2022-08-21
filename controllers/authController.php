@@ -39,7 +39,7 @@
                    $_SESSION['firstname'] = $this->myUser->firstname;
                    $_SESSION['lastname'] = $this->myUser->lastname;
                    header('location: http://www.google.com');
-                   exit();
+                   exit();  
                } else if( $this->myUser->profileId == 2 && $this->myUser->token == "" ) {
                    // Création de la session et redirection vers la vue éditeur simple
                     session_start();

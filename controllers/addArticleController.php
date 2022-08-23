@@ -1,5 +1,6 @@
 <?php
     require_once("models/articles.php");
+    require_once("models/categories.php");
     require_once("config/database.php");
 
     $article = new Article($db);
@@ -14,7 +15,9 @@
             header('Location: /?list-articles');
             exit();
         } 
-    }   
-    include("views/admin/addArticleView.php");
-
+    }else { 
+        $tmp = new Category($db);
+        $cat = $tmp->getCategories(); 
+        include("views/admin/addArticleView.php");
+    }
 ?>

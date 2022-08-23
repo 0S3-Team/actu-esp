@@ -19,7 +19,7 @@
         }
 
         public function getAllArticles(){
-            $sqlQuery = "SELECT a.id, a.title, a.date, a.author AS authorId, u.id AS author, a.categoryId, c.description AS category FROM " . $this->db_table . " a, Category c, User u WHERE a.author = u.id AND a.categoryId = c.id";
+            $sqlQuery = "SELECT a.id, a.title, a.content, a.date, a.author AS authorId, u.id AS author, a.categoryId, c.description AS category FROM " . $this->db_table . " a, category c, User u WHERE a.author = u.id AND a.categoryId = c.id";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;

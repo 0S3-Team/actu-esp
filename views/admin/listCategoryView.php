@@ -6,14 +6,14 @@
 </div>
  <div class="row justify-content-center">
     <div class="col-lg-6 ">
-
-   <ul class="list-group">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
-              </ul>
+    <?php
+      while ($row = $categories->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        echo '
+              <ul class="list-group">
+                <li class="list-group-item">'.$description.'</li>
+              </ul>';
+      }?>
 </div>
 </div>
   </main>

@@ -3,7 +3,7 @@
         //$listUser // gnerer par le controleur
         include_once "views/admin/listUserView.php";
     } elseif (isset($_GET['list-categories'])) { // http://localhost/?list-categories
-        include_once "views/admin/listCategoryView.php";
+        include_once "controllers/listCategoriesController.php";
     } elseif (isset($_GET['list-articles'])) {
         include_once "controllers/listArticleController.php";
     } elseif (isset($_GET['dashboard'])) {

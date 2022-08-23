@@ -1,7 +1,7 @@
 <?php
     if (isset($_GET['list-users'])) {
         //$listUser // gnerer par le controleur
-        include_once "views/admin/listUserView.php";
+        include_once "controllers/listUserController.php";
     } elseif (isset($_GET['list-categories'])) { // http://localhost/?list-categories
         include_once "controllers/listCategoriesController.php";
     } elseif (isset($_GET['list-articles'])) {

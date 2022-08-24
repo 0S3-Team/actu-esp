@@ -10,6 +10,7 @@
     <?php
       while ($row = $articles->fetch(PDO::FETCH_ASSOC)){
         extract($row);
+        $content = substr($content, -100); 
         echo '
             <div class="col-4">   
             <div class="card">

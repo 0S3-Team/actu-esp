@@ -8,7 +8,7 @@
         $category->description = $_POST['description'];
         
         if($category->createCategory()){
-            header('Location: /?list-categories');
+            header('Location: ./?list-categories');
             exit();
         }
     }   

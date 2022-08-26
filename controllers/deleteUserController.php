@@ -4,6 +4,11 @@
     require_once("models/users.php");
     require_once("config/database.php");
 
+    if (!$_SESSION) {
+        header('Location: ./?login');
+        exit();
+    }
+
     $tmp = new User($db);
     if(isset($_GET['id'])){
         $tmp->id= $_GET['id'];
@@ -18,7 +23,3 @@
         }
 
     }
-
-    
-    
-?>

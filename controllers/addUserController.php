@@ -13,7 +13,7 @@
         $user->profileId = 2;
         $user->passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         if($user->createUser()){
-            header('Location: /?list-users');
+            header('Location: ./?list-users');
             exit();
         }
     }   

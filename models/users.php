@@ -19,7 +19,7 @@
         }
         // GET ALL
         public function getUsers(){
-            $sqlQuery = "SELECT u.id, u.firstname, u.laststname, u.login, u.token, u.profileId, p.description AS profile FROM " . $this->db_table . " u, Profile p WHERE u.profileId = p.id";
+            $sqlQuery = "SELECT u.id, u.firstname, u.lastname, u.login, u.token, u.profileId, p.description AS profile FROM " . $this->db_table . " u, Profile p WHERE u.profileId = p.id";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;

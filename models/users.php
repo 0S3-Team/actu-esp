@@ -1,33 +1,37 @@
 <?php
-    class User{
-        // Connection
-        private $conn;
-        // Table
-        private $db_table = "User";
-        // Columns
-        public $id;
-        public $firstname;
-        public $lastname;
-        public $login;
-        public $token = "";
-        public $profileId;
-        public $profile;
-        public $passwordHash;
-        // Db connection
-        public function __construct($db){
-            $this->conn = $db;
-        }
-        // GET ALL
-        public function getUsers(){
-            $sqlQuery = "SELECT u.id, u.firstname, u.lastname, u.login, u.token, u.profileId, p.description AS profile FROM " . $this->db_table . " u, Profile p WHERE u.profileId = p.id";
-            $stmt = $this->conn->prepare($sqlQuery);
-            $stmt->execute();
-            return $stmt;
-        }
-        // CREATE
-        public function createUser(){
-            $sqlQuery = "INSERT INTO
-                        ". $this->db_table ."
+class User
+{
+    // Connection
+    private $conn;
+    // Table
+    private $db_table = "User";
+    // Columns
+    public $id;
+    public $firstname;
+    public $lastname;
+    public $login;
+    public $token = "";
+    public $profileId;
+    public $profile;
+    public $passwordHash;
+    // Db connection
+    public function __construct($db)
+    {
+        $this->conn = $db;
+    }
+    // GET ALL
+    public function getUsers()
+    {
+        $sqlQuery = "SELECT u.id, u.firstname, u.lastname, u.login, u.token, u.profileId, p.description AS profile FROM " . $this->db_table . " u, Profile p WHERE u.profileId = p.id";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+        return $stmt;
+    }
+    // CREATE
+    public function createUser()
+    {
+        $sqlQuery = "INSERT INTO
+                        " . $this->db_table . "
                     SET
                         firstname = :firstname, 
                         lastname = :lastname, 
@@ -35,33 +39,34 @@
                         token = :token, 
                         passwordHash = :passwordHash, 
                         profileId = :profileId";
-        
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            // sanitize
-            $this->firstname=htmlspecialchars(strip_tags($this->firstname));
-            $this->lastname=htmlspecialchars(strip_tags($this->lastname));
-            $this->login=htmlspecialchars(strip_tags($this->login));
-            $this->token=htmlspecialchars(strip_tags($this->token));
-            $this->profileId=htmlspecialchars(strip_tags($this->profileId));
-            $this->passwordHash=htmlspecialchars(strip_tags($this->passwordHash));
-        
-            // bind data
-            $stmt->bindParam(":firstname", $this->firstname);
-            $stmt->bindParam(":lastname", $this->lastname);
-            $stmt->bindParam(":login", $this->login);
-            $stmt->bindParam(":token", $this->token);
-            $stmt->bindParam(":profileId", $this->profileId);
-            $stmt->bindParam(":passwordHash", $this->passwordHash);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        // sanitize
+        $this->firstname = htmlspecialchars(strip_tags($this->firstname));
+        $this->lastname = htmlspecialchars(strip_tags($this->lastname));
+        $this->login = htmlspecialchars(strip_tags($this->login));
+        $this->token = htmlspecialchars(strip_tags($this->token));
+        $this->profileId = htmlspecialchars(strip_tags($this->profileId));
+        $this->passwordHash = htmlspecialchars(strip_tags($this->passwordHash));
+
+        // bind data
+        $stmt->bindParam(":firstname", $this->firstname);
+        $stmt->bindParam(":lastname", $this->lastname);
+        $stmt->bindParam(":login", $this->login);
+        $stmt->bindParam(":token", $this->token);
+        $stmt->bindParam(":profileId", $this->profileId);
+        $stmt->bindParam(":passwordHash", $this->passwordHash);
+
+        if ($stmt->execute()) {
+            return true;
         }
-        // READ single
-        public function getSingleUser(){
-            $sqlQuery = "SELECT
+        return false;
+    }
+    // READ single
+    public function getSingleUser()
+    {
+        $sqlQuery = "SELECT
                         u.id, 
                         u.firstname, 
                         u.lastname, 
@@ -70,25 +75,26 @@
                         u.profileId, 
                         p.description AS profile
                       FROM
-                        ". $this->db_table ." u, Profile p
+                        " . $this->db_table . " u, Profile p
                     WHERE 
                        u.id = ? AND u.profileId = p.id
                     LIMIT 0,1";
-            $stmt = $this->conn->prepare($sqlQuery);
-            $stmt->bindParam(1, $this->id);
-            $stmt->execute();
-            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $this->firstname = $dataRow['firstname'];
-            $this->lastname = $dataRow['lastname'];
-            $this->login = $dataRow['login'];
-            $this->token = $dataRow['token'];
-            $this->profileId = $dataRow['profileId'];
-            $this->profile = $dataRow['profile'];
-        }
-        
-        public function getUserByLogin(){
-            $sqlQuery = "SELECT
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(1, $this->id);
+        $stmt->execute();
+        $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $this->firstname = $dataRow['firstname'];
+        $this->lastname = $dataRow['lastname'];
+        $this->login = $dataRow['login'];
+        $this->token = $dataRow['token'];
+        $this->profileId = $dataRow['profileId'];
+        $this->profile = $dataRow['profile'];
+    }
+
+    public function getUserByLogin()
+    {
+        $sqlQuery = "SELECT
                         u.id, 
                         u.firstname, 
                         u.lastname, 
@@ -98,33 +104,33 @@
                         p.description AS profile,
                         u.passwordHash
                       FROM
-                        ". $this->db_table ." u, Profile p
+                        " . $this->db_table . " u, Profile p
                     WHERE 
                        u.login = ? AND u.profileId = p.id
                     LIMIT 0,1";
-            $stmt = $this->conn->prepare($sqlQuery);
-            $stmt->bindParam(1, $this->login);
-            $stmt->execute();
-            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if(count($dataRow) == 0){
-                return false;
-            }
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bindParam(1, $this->login);
+        $stmt->execute();
+        $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $this->firstname = $dataRow['firstname'];
-            $this->lastname = $dataRow['lastname'];
-            $this->login = $dataRow['login'];
-            $this->token = $dataRow['token'];
-            $this->profileId = $dataRow['profileId'];
-            $this->profile = $dataRow['profile'];
-            $this->passwordHash = $dataRow['passwordHash'];
-            
-            return true;
+        if (!$dataRow) {
+            return false;
         }
-        // UPDATE
-        public function updateUser(){
-            $sqlQuery = "UPDATE
-                        ". $this->db_table ."
+
+        $this->firstname = $dataRow['firstname'];
+        $this->lastname = $dataRow['lastname'];
+        $this->login = $dataRow['login'];
+        $this->token = $dataRow['token'];
+        $this->profileId = $dataRow['profileId'];
+        $this->profile = $dataRow['profile'];
+        $this->passwordHash = $dataRow['passwordHash'];
+        return true;
+    }
+    // UPDATE
+    public function updateUser()
+    {
+        $sqlQuery = "UPDATE
+                        " . $this->db_table . "
                     SET
                         firstname = :firstname, 
                         lastname = :lastname, 
@@ -133,42 +139,42 @@
                         profileId = :profileId, 
                     WHERE 
                         id = :id";
-        
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            $this->firstname=htmlspecialchars(strip_tags($this->firstname));
-            $this->lastname=htmlspecialchars(strip_tags($this->lastname));
-            $this->login=htmlspecialchars(strip_tags($this->login));
-            $this->token=htmlspecialchars(strip_tags($this->token));
-            $this->profileId=htmlspecialchars(strip_tags($this->profileId));
-            $this->id=htmlspecialchars(strip_tags($this->id));
-        
-            // bind data
-            $stmt->bindParam(":firstname", $this->firstname);
-            $stmt->bindParam(":lastname", $this->lastname);
-            $stmt->bindParam(":login", $this->login);
-            $stmt->bindParam(":token", $this->token);
-            $stmt->bindParam(":profileId", $this->profileId);
-            $stmt->bindParam(":id", $this->id);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
+
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        $this->firstname = htmlspecialchars(strip_tags($this->firstname));
+        $this->lastname = htmlspecialchars(strip_tags($this->lastname));
+        $this->login = htmlspecialchars(strip_tags($this->login));
+        $this->token = htmlspecialchars(strip_tags($this->token));
+        $this->profileId = htmlspecialchars(strip_tags($this->profileId));
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        // bind data
+        $stmt->bindParam(":firstname", $this->firstname);
+        $stmt->bindParam(":lastname", $this->lastname);
+        $stmt->bindParam(":login", $this->login);
+        $stmt->bindParam(":token", $this->token);
+        $stmt->bindParam(":profileId", $this->profileId);
+        $stmt->bindParam(":id", $this->id);
+
+        if ($stmt->execute()) {
+            return true;
         }
-        // DELETE
-        function deleteUser(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            $this->id=htmlspecialchars(strip_tags($this->id));
-        
-            $stmt->bindParam(1, $this->id);
-        
-            if($stmt->execute()){
-                return true;
-            }
-            return false;
-        }
+        return false;
     }
-?>
+    // DELETE
+    function deleteUser()
+    {
+        $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+        $stmt = $this->conn->prepare($sqlQuery);
+
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        $stmt->bindParam(1, $this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+}

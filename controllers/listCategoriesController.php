@@ -6,6 +6,11 @@
     $tmp = new Category($db);
     $categories = $tmp->getCategories();
     $msg = '';
+
+    if (!$_SESSION) {
+        header('Location: ./?login');
+        exit();
+    }
     // Suppression categorie
     if(isset($_GET['id'])){
         $tmp->id = $_GET['id'];
@@ -47,5 +52,3 @@
     // }
     
     include("views/admin/listCategoryView.php");
-    
-?>

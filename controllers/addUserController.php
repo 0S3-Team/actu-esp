@@ -10,10 +10,7 @@ function generateToken()
     //Print it out for example purposes.
     return $token;
 }
-if (!$_SESSION) {
-    header('Location: ./?login');
-    exit();
-}
+
 
 $user = new User($db);
 if (
@@ -33,3 +30,8 @@ if (
     }
 }
 include("views/admin/addUserView.php");
+
+if (!$_SESSION) {
+    header('Location: ./?login');
+    exit();
+}

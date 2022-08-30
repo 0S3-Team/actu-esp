@@ -3,10 +3,6 @@ require_once("models/articles.php");
 require_once("models/categories.php");
 require_once("config/database.php");
 
-if (!$_SESSION) {
-    header('Location: ./?login');
-    exit();
-}
 
 $article = new Article($db);
 if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['categoryId'])) {
@@ -24,4 +20,9 @@ if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['category
     $tmp = new Category($db);
     $cat = $tmp->getCategories();
     include("views/admin/addArticleView.php");
+}
+
+if (!$_SESSION) {
+    header('Location: ./?login');
+    exit();
 }

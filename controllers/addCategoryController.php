@@ -2,10 +2,7 @@
 require_once("models/categories.php");
 require_once("config/database.php");
 
-if (!$_SESSION) {
-    header('Location: ./?login');
-    exit();
-}
+
 
 $category = new Category($db);
 if (isset($_POST['description'])) {
@@ -18,3 +15,8 @@ if (isset($_POST['description'])) {
     }
 }
 include("views/admin/addCategoryView.php");
+
+if (!$_SESSION) {
+    header('Location: ./?login');
+    exit();
+}

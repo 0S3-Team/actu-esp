@@ -4,10 +4,6 @@ require_once("models/categories.php");
 require_once("models/users.php");
 require_once("config/database.php");
 
-if (!$_SESSION) {
-    header('Location: ./?login');
-    exit();
-}
 
 $tmp = new User($db);
 $users = $tmp->getUsers();
@@ -34,3 +30,8 @@ if (isset($_GET['deleted'])) {
 
 
 include("views/admin/listUserView.php");
+
+if (!$_SESSION) {
+    header('Location: ./?login');
+    exit();
+}

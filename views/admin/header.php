@@ -39,6 +39,9 @@ define('IMG_PATH', 'views/admin/assets/img/'); //define JavaScript path
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
+    <div>
+      <a href="./?dashboard&disconnect"><button class="btn btn-primary me-md-2" type="button">Se déconnecter</button></a>
+    </div>
   </header>
 
   <aside id="sidebar" class="sidebar">

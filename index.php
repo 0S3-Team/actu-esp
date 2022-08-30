@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET['list-users'])) {
     //$listUser // gnerer par le controleur
     include_once "controllers/listUserController.php";
